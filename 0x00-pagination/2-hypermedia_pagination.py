@@ -12,8 +12,6 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     return ((page - 1) * page_size, page * page_size)
 
 
-
-
 class Server:
     """ Server class to paginate a database of popular baby names. """
     DATA_FILE = "Popular_Baby_Names.csv"
@@ -30,7 +28,6 @@ class Server:
                 reader = csv.reader(f)
                 self.__dataset = [row for row in reader]
         return self.__dataset
-
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """ return a dictionary containing the following key-value pairs:
@@ -59,5 +56,3 @@ class Server:
         assert type(page_size) is int and page_size > 0
 
         return self.get_hyper(page, page_size)['data']
-    
-   
