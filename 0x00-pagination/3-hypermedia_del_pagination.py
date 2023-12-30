@@ -39,37 +39,22 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            pass
-    
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
-        """Return pagination information
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> List:
+        """Return a page of the dataset
         """
-        assert type(page) is int and page > 0
-        assert type(page_size) is int and page_size > 0
+        assert type(index) is int
+        assert type(page_size) is int
+        assert 0 <= index < len(self.dataset())
+        assert 0 < page_size <= 1000
 
+        indexed_dataset = self.indexed_dataset()
+        next_index = index
         data = []
-        data_index = self.get_hyper_index(page, page_size)
-        next_index = data_index.get('next_index')
-        prev_index = data_index.get('prev_index')
+        for _ in range(page_size):
+            while next_index not in indexed_dataset.keys():
+                next_index += 1
+            data.append(indexed_dataset[next_index])
+            next_index += 1
+        return data
 
-        for i in range(page_size):
-            row = self.dataset().get(next_index + i)
-            if row:
-                data.append(row)
-            else:
-                break
-
-        return {
-            'page_size': len(data),
-            'page': page,
-            'data': data,
-            'next_page': page + 1 if next_index else None,
-            'prev_page': page - 1 if prev_index else None,
-            'total_pages': math.ceil(len(self.dataset()) / page_size)
-        }
     
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """Return requested page
-        """
-        return self.get_hyper(page, page_size)['data']
