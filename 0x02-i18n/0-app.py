@@ -12,6 +12,12 @@ def index() -> str:
     """
     return render_template('0-index.html')
 
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index() -> str:
+    """index
+    """
+    return "Hello world!"
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port="5000", debug=True, threaded=True)
