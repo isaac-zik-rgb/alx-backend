@@ -18,6 +18,7 @@ class Config(object):
 
 app.config.from_object(Config)
 
+
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
     """index
