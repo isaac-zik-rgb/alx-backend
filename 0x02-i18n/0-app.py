@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Simple message of welcoming"""
 from flask import Flask
-from flask import render_template, request, Response
+from flask import render_template
 
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def index() -> Response:
+def index() -> str:
     """index
     """
     return render_template('0-index.html')
