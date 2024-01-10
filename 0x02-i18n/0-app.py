@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def index(request: Response) -> Response:
+def index() -> Response:
     """index
     """
     return render_template('0-index.html')
