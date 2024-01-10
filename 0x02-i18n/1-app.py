@@ -17,3 +17,13 @@ class Config(object):
 
 
 app.config.from_object(Config)
+
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index() -> str:
+    """index
+    """
+    return render_template('1-index.html')
+
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port="5000", debug=True, threaded=True)
