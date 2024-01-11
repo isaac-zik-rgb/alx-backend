@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Instatiating babel in Flask app"""
+
 from flask import Flask
 from flask import render_template
 from flask_babel import Babel
