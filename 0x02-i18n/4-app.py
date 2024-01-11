@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Instatiating babel in Flask app"""
+""" implement a way to force a particular locale
+by passing the locale=fr parameter to your app’s URLs.
+"""
 from flask import Flask
 from flask import render_template
 from flask_babel import Babel, gettext
