@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Instatiating babel in Flask app"""
-from flask import Flask
-from flask import render_template
+"""
+Flask app
+"""
+from flask import (
+    Flask,
+    render_template,
+    request,
+    g
+)
 from flask_babel import Babel
-from flask import request
-from flask_babel import _, gettext
-from flask import g
+
+
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -61,7 +66,7 @@ def before_request():
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
-    """index
+    """ Handles / route
     """
     return render_template('5-index.html', user=g.user)
 
