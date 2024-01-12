@@ -27,7 +27,6 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
-
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
     """The home/index page
