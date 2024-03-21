@@ -15,7 +15,7 @@ def fetch_data(*, update: bool = False, json_cache: str, url: str):
     
     if not json_data:
         print("Fetching new json data... (Creating local cache)")
-        json_data = requests.get(url).json()
+        json_data = requests.get(url, timeout=60).json()
         with open(json_cache, 'w') as file:
             json.dump(json_data, file)
         
